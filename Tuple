@@ -1,0 +1,72 @@
+//https://www.codechef.com/SSCC2020/problems/SSEC0004/
+#include<bits/stdc++.h>
+using namespace std;
+typedef     long long    ll;
+typedef     vector<int> vi;
+typedef     vector<long long> vl;
+typedef     pair<int, int>pi;
+typedef     pair<long long, long long>pl;
+#define F   first
+#define S   second
+#define pb  push_back
+#define     all(x)      x.begin() , x.end()
+#define mp  make_pair
+#define       FOR(i,a,b) for(i=a;i<=b;i++)
+#define     mem(a)      memset(a , 0 ,sizeof a)
+#define     memn(a)     memset(a , -1 ,sizeof a)
+int main() {
+
+  vector<tuple<int, int, int> > myVec;
+  int n, i, x, y, z, p, l, j;
+  cin >> n;
+  for (i = 1; i <= n; i++)
+  {
+    string s;
+    cin >> s;
+    x = 0; y = 0; z = 0;
+
+    for (j = 0; j < s.size(); j++)
+    {
+      if (s[j] == '/')
+      {
+        j++;
+        break;
+      } else
+      {
+        x = x * 10 + (s[j] - '0');
+      }
+    }
+
+    for (; j < s.size(); j++)
+    {
+      if (s[j] =='/')
+      {
+        j++;
+        break; 
+      } else
+      {
+        y = y * 10 + (s[j] - '0');
+      }
+    }
+    for (; j < s.size(); j++)
+    {
+      if (s[j] == '/')
+      {
+        j++;
+        break;
+      } else
+      {
+        z = z * 10 + (s[j] - '0');
+      }
+    }
+    myVec.pb(make_tuple(z, y, x));
+  }
+  sort(myVec.begin(), myVec.end());
+
+  for (auto i : myVec) {
+    cout << std::get<2>(i) << "/" << std::get<1>(i) << "/" << std::get<0>(i) << '\n';
+  }
+
+  return 0;
+}
+// https://www.codechef.com/SSCC2020/problems/SSEC0004/
